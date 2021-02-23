@@ -26,7 +26,5 @@ export default {
     SwiperItem
   }
 }
-
-console.log('========================')
 </script>
 
