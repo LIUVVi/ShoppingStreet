@@ -65,7 +65,8 @@ export default {
       currentType: 'pop',
       isShowBackTop: false,
       tabOffsetTop: 0,
-      isTabFixed: false
+      isTabFixed: false,
+      saveY: 0
     }
   },
   computed: {
@@ -88,6 +89,16 @@ export default {
     this.$bus.$on('itemImageLoad', () => {
       this.$refs.scroll && refresh()
     })
+  },
+  activated() {
+    console.log('设置位置');
+    this.$refs.scroll.refresh()
+    this.$refs.scroll.scrollTo(0, this.saveY, 0)
+  },
+  deactivated() {
+    this.saveY = this.$refs.scroll.scroll.y
+    console.log(this.saveY)
+    console.log('记录位置');
   },
   methods: {
     /* 事件监听相关 */
